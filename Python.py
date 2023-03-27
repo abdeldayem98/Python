@@ -1,4 +1,14 @@
-#Simple output program
-#Marwan 2/25/2023 11:31AM
+import platform    # For getting the operating system name
+import subprocess  # For executing a shell command
 
-print("Hello World")
+def ping(host):
+    
+    # Option for the number of packets as a function of
+    param = '-n' if platform.system().lower()=='windows' else '-c'
+
+    # Building the command. Ex: "ping -c 1 google.com"
+    command = ['ping', param, '1', host]
+
+    return subprocess.call(command) == 0
+
+ping ("google.com")c
